@@ -5,6 +5,7 @@ import { setAdvertisement, setBrands } from "./redux/rootReducer";
 import { useDispatch } from "react-redux";
 import { Route, useRouteError, BrowserRouter, Routes } from "react-router-dom";
 import getAdvertisements from "./utils/getAdvertisements";
+import AdvertisementDetail from "./components/AdvetisementDetail";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,9 @@ function App() {
           path="/"
           errorElement={<ErrorBoundary />}
         />
+        <Route
+        element={<AdvertisementDetail/>}
+        path="/advertisement/:id"/>
       </Routes>
     </BrowserRouter>
   );

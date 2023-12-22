@@ -31,7 +31,7 @@ export default function Search() {
         value={brand}
         onChange={(i) => dispatch(setBrand(i.target.value))}
       >
-        <option value="Enter the text">Enter the text</option>
+        <option value="">Enter the text</option>
         {brands.map((brand, i) => (
           <option value={brand} key={i}>
             {brand}
