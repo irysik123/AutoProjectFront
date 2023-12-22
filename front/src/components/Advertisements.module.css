@@ -1,0 +1,80 @@
+.search_bar {
+  display: flex;
+  gap: 18px;
+  align-content: center;
+  justify-content: center;
+}
+
+.search_header {
+  color: var(--color-search-header);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: calc(18 / 14);
+  border-radius: 14px;
+  background: #f7f7fb;
+  height: 48px;
+}
+
+.brand_input {
+  width: 224px;
+  color: var(--color-text-main);
+  font-style: normal;
+  font-weight: 500;
+  line-height: calc(20 / 18);
+}
+
+.price_input {
+  width: 125px;
+  color: var(--color-text-main);
+  font-style: normal;
+  font-weight: 500;
+  line-height: calc(20 / 18);
+}
+.from_input {
+  width: 160px;
+  color: var(--color-text-main);
+  font-style: normal;
+  font-weight: 500;
+  line-height: calc(20 / 18);
+}
+
+.card {
+  width: 274px;
+}
+
+.advertisement_card {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 29px;
+}
+
+.card_img {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 268px;
+  /* background: linear-gradient(180deg, rgba(18, 20, 23, 0.50) 2.5%, rgba(18, 20, 23, 0.00) 41.07%), url(<path-to-image>), lightgray 50% / cover no-repeat; */
+}
+
+.header {
+  color: #121417;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: calc(24 / 16);
+}
+
+.headerAccent {
+  color: var(--color-accent);
+}
+
+.ad_descr {
+  color: var(--color-text-descr);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: calc(18 / 12);
+}

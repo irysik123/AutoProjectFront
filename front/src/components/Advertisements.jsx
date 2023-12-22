@@ -2,6 +2,8 @@ import AdvertisementCard from "./AdvertisementCard";
 import { useSelector, useDispatch } from "react-redux";
 import { setOffset, setAdvertisement } from "../redux/rootReducer";
 import getAdvertisements from "../utils/getAdvertisements";
+import css from './Advertisements.module.css'
+
 
 function Advertisements() {
   const { advertisement, offset, brand, price, mileage } = useSelector(
@@ -19,7 +21,7 @@ function Advertisements() {
   }
 
   return (
-    <div>
+    <div className={css.advertisement_card}>
       {advertisement.map((ad, i) => (
         <AdvertisementCard data={ad} key={i} />
       ))}

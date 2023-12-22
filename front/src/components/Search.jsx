@@ -6,6 +6,7 @@ import {
   setAdvertisement,
 } from "../redux/rootReducer";
 import getAdvertisements from "../utils/getAdvertisements";
+import css from "./Advertisements.module.css";
 
 const prices = [30, 40, 50, 60, 70, 80, 90, 100, 200, 300, 400, 500];
 
@@ -23,52 +24,62 @@ export default function Search() {
   }
 
   return (
-    <div>
-      <p>Car Brand</p>
-      <select
-        name="Car brand"
-        id="carBrand"
-        value={brand}
-        onChange={(i) => dispatch(setBrand(i.target.value))}
-      >
-        <option value="">Enter the text</option>
-        {brands.map((brand, i) => (
-          <option value={brand} key={i}>
-            {brand}
-          </option>
-        ))}
-      </select>
+    <div className={css.search_bar}>
+      <div>
+        <p className={css.search_header}>Car Brand</p>
+        <select
+          name="Car brand"
+          id="carBrand"
+          value={brand}
+          onChange={(i) => dispatch(setBrand(i.target.value))}
+          
+        >
+          <option value="">Enter the text</option>
+          {brands.map((brand, i) => (
+            <option value={brand} key={i}>
+              {brand}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      <p>Car Price</p>
-      <select
-        name="Car price"
-        id="carPrice"
-        value={price}
-        onChange={(i) => dispatch(setPrice(i.target.value))}
-      >
-        <option value="To $">To $</option>
-        {prices.map((price, i) => (
-          <option value={price} key={i}>
-            {price}
-          </option>
-        ))}
-      </select>
+      <div>
+        <p className={css.search_header}>Price/ 1 hour</p>
+        <select
+          name="Car price"
+          id="carPrice"
+          value={price}
+          onChange={(i) => dispatch(setPrice(i.target.value))}
+          className={css.price_input}
+        >
+          <option value="To $">To $</option>
+          {prices.map((price, i) => (
+            <option value={price} key={i}>
+              {price}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      <p>Car mileage / km</p>
-      <input
-        type="text"
-        value={mileage.from}
-        onChange={(i) =>
-          dispatch(setMileage({ ...mileage, from: i.target.value }))
-        }
-      />
-      <input
-        type="text"
-        value={mileage.to}
-        onChange={(i) =>
-          dispatch(setMileage({ ...mileage, to: i.target.value }))
-        }
-      />
+      <div>
+        <p className={css.search_header}>Car mileage / km</p>
+        <input
+          type="text"
+          value={mileage.from}
+          onChange={(i) =>
+            dispatch(setMileage({ ...mileage, from: i.target.value }))
+          }
+          className={css.from_input}
+        />
+        <input
+          type="text"
+          value={mileage.to}
+          onChange={(i) =>
+            dispatch(setMileage({ ...mileage, to: i.target.value }))
+          }
+          className={css.from_input}
+        />
+      </div>
 
       <button onClick={handleOnClick}>Search</button>
     </div>
