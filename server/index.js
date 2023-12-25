@@ -1,10 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const getAdvertisementById = require("./utils/getAdvertisementById.js");
-const mongoose = require('mongoose');
-require('dotenv').config()
-const {DB_HOST, PORT = 4000} = process.env;
-const Advertisement = require('./models/Advertisement.js')
+const mongoose = require("mongoose");
+require("dotenv").config();
+const { DB_HOST, PORT = 4000 } = process.env;
+const Advertisement = require("./models/Advertisement.js");
 
 mongoose
   .connect(DB_HOST)
@@ -18,37 +18,37 @@ mongoose
     process.exit(1);
   });
 
-
 const cars = require("./advertsCars.json");
 
 const app = express();
 app.use(cors());
 
 app.get("/advertisements", async (req, res) => {
-  let { brand, price, mileageTo = 200000, mileageFrom = 0, offset = 0, amount = 10 } = req.query;
-  let result = await Advertisement.find({$and:[
-  {make:brand || {$regex:/.*/}},
-    {mileage: {$gte:+mileageFrom, $lte:+mileageTo}}
-  ]})
-console.log(result)
-//   if (!brand) {
-//     result = result.filter((ad) => ad.make == brand);
-//   }
+  let {
+    brand,
+    price,
+    mileageTo = 200000,
+    mileageFrom = 0,
+    offset = 0,
+    amount = 10,
+  } = req.query;
+  let result = await Advertisement.find({
+    $and: [
+      { make: brand || { $regex: /.*/ } },
+            // { make: brand  },
+      { mileage: { $gte: +mileageFrom, $lte: +mileageTo || 200000 } },
+    ],
+  });
+
+  console.log(result);
+
   if (price) {
     result = result.filter(
       (ad) => Number(ad.rentalPrice.substring(1)) <= Number(price)
     );
   }
-//   if (mileageFrom < mileageTo) {
-//     result = result.filter(
-//       (ad) =>
-//         !isNaN(ad.mileage) &&
-//         ad.mileage >= +mileageFrom &&
-//         ad.mileage <= +mileageTo
-//     );
-//   }
-console.log(offset)
-  res.json(result.slice(+offset, +amount + +offset));
+  console.log(offset);
+  res.json({data: result.slice(+offset, +amount + +offset), total: result.length, amount: +amount + +offset});
 });
 
 app.get("/brands", (req, res) => {
@@ -61,9 +61,7 @@ app.get("/advertisement/:id", async (req, res) => {
   res.json(advertisement);
 });
 
-
 // доробити
 app.post("/advertisement", async (req, res) => {
-    Advertisement.insert()
-} )
-
+  Advertisement.insert();
+});

@@ -14,7 +14,7 @@ export default function AdvertisementCard({ data }) {
         <p className={css.ad_descr}>{data.address} | {data.rentalCompany} | {data.type} | {data.functionalities[0]}</p>
       </div>
       <div>
-        <Link to={`/advertisement/${data.id}`}>Load more</Link>
+        <Link to={`/advertisement/${data._id}`}>Load more</Link>
       </div>
     </div>
   );

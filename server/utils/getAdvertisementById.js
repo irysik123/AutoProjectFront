@@ -1,7 +1,8 @@
-const cars = require("../advertsCars.json");
+// const cars = require("../advertsCars.json");
+const Advertisement = require("../models/Advertisement")
 
- function getAdvertisementById (id) {
-    let result = cars.find(car => car.id == id)
+ async function getAdvertisementById (id) {
+    let result = await Advertisement.findById(id)
     return result
 }
 

@@ -8,7 +8,8 @@ const carsSlice = createSlice({
     mileage: { from: 0, to: 0 },
     advertisement: [],
     brands: [],
-    offset: 0
+    offset: 0,
+    loadMore: true
   },
   reducers: {
     setBrand(state, action) {
@@ -25,6 +26,7 @@ const carsSlice = createSlice({
       let {clear, advertisements} = action.payload;
       if(clear) {
         state.advertisement = advertisements;
+        state.offset = 0;
       } else {
         state.advertisement = [...state.advertisement, ...advertisements];
       }
@@ -35,6 +37,9 @@ const carsSlice = createSlice({
     },
     setOffset(state, action) {
       state.offset = action.payload;
+    },
+    setLoadMore(state, action) {
+      state.loadMore = action.payload;
     }
   },
 });
@@ -42,6 +47,6 @@ const carsSlice = createSlice({
 // Extract the action creators object and the reducer
 const { actions, reducer } = carsSlice;
 // Extract and export each action creator by name
-export const { setBrand, setPrice, setMileage, setAdvertisement, setBrands, setOffset } = actions;
+export const { setBrand, setPrice, setMileage, setAdvertisement, setBrands, setOffset, setLoadMore } = actions;
 // Export the reducer, either as a default or named export
 export default reducer;
