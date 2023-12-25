@@ -19,7 +19,7 @@ export default function Search() {
 
   function handleOnClick() {
     getAdvertisements({ brand, price, mileage }).then((data) =>
-      dispatch(setAdvertisement(data))
+      dispatch(setAdvertisement({advertisements: data, clear:true}))
     );
   }
 
@@ -28,6 +28,7 @@ export default function Search() {
       <div>
         <p className={css.search_header}>Car Brand</p>
         <select
+        className={css.select}
           name="Car brand"
           id="carBrand"
           value={brand}
@@ -50,7 +51,7 @@ export default function Search() {
           id="carPrice"
           value={price}
           onChange={(i) => dispatch(setPrice(i.target.value))}
-          className={css.price_input}
+          className={`${css['select_price']}`}
         >
           <option value="To $">To $</option>
           {prices.map((price, i) => (
@@ -69,7 +70,7 @@ export default function Search() {
           onChange={(i) =>
             dispatch(setMileage({ ...mileage, from: i.target.value }))
           }
-          className={css.from_input}
+          className={` ${css['select_from']}`}
         />
         <input
           type="text"
@@ -77,11 +78,11 @@ export default function Search() {
           onChange={(i) =>
             dispatch(setMileage({ ...mileage, to: i.target.value }))
           }
-          className={css.from_input}
+          className={`${css['select_from']}`}
         />
       </div>
 
-      <button onClick={handleOnClick}>Search</button>
+      <button className={css.btn_search} onClick={handleOnClick}>Search</button>
     </div>
   );
 }

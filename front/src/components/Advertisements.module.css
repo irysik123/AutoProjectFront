@@ -1,3 +1,8 @@
+.container {
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
 .search_bar {
   display: flex;
   gap: 18px;
@@ -11,27 +16,8 @@
   font-weight: 500;
   line-height: calc(18 / 14);
   border-radius: 14px;
-  background: #f7f7fb;
-  height: 48px;
 }
-
-.brand_input {
-  width: 224px;
-  color: var(--color-text-main);
-  font-style: normal;
-  font-weight: 500;
-  line-height: calc(20 / 18);
-}
-
-.price_input {
-  width: 125px;
-  color: var(--color-text-main);
-  font-style: normal;
-  font-weight: 500;
-  line-height: calc(20 / 18);
-}
-.from_input {
-  width: 160px;
+.input_field {
   color: var(--color-text-main);
   font-style: normal;
   font-weight: 500;
@@ -40,6 +26,12 @@
 
 .card {
   width: 274px;
+}
+
+.advertisements_container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .advertisement_card {
@@ -77,4 +69,75 @@
   font-size: 12px;
   font-weight: 400;
   line-height: calc(18 / 12);
+}
+
+.btn_search {
+  width: 136px;
+  height: 48px;
+  padding: 14px 44px;
+  background-color: var(--color-accent);
+  border-radius: 12px;
+  color: var(--color-white);
+  cursor: pointer;
+
+  margin-top: 18px;
+
+  font-style: normal;
+  line-height: calc(20 / 14);
+}
+
+.select {
+  height: 48px;
+  width: 224px;
+  border-radius: 14px;
+  background-color: #f7f7fb;
+  padding: 14px 89px 14px 18px;
+  padding-right: 0;
+
+  color: #121417;
+
+  font-size: 18px;
+  line-height: calc(20 / 18);
+}
+
+.select_price {
+  height: 48px;
+  width: 125px;
+  border-radius: 14px;
+  background-color: #f7f7fb;
+  padding: 14px 89px 14px 18px;
+  padding-right: 0;
+
+  color: #121417;
+
+  font-size: 18px;
+  line-height: calc(20 / 18);
+}
+
+.select_from {
+  height: 48px;
+  width: 160px;
+  border-radius: 14px;
+  background-color: #f7f7fb;
+  padding: 14px 89px 14px 18px;
+  padding-right: 0;
+
+  color: #121417;
+
+  font-size: 18px;
+  line-height: calc(20 / 18);
+
+  /* border-radius: 14px 0px 0px 14px; */
+}
+
+.btn_more {
+  color: var(--color-accent);
+
+  font-size: 16px;
+  line-height: calc(24 / 16);
+  text-decoration-line: underline;
+  cursor: pointer;
+  text-align: center;
+
+  margin-top: 100px;
 }

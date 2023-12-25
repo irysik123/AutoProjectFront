@@ -22,7 +22,13 @@ const carsSlice = createSlice({
       // console.log(state.mileage)
     },
     setAdvertisement(state, action) {
-      state.advertisement = [...state.advertisement, ...action.payload];
+      let {clear, advertisements} = action.payload;
+      if(clear) {
+        state.advertisement = advertisements;
+      } else {
+        state.advertisement = [...state.advertisement, ...advertisements];
+      }
+      
     },
     setBrands(state, action) {
         state.brands = action.payload

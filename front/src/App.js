@@ -13,21 +13,18 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:4000/brands")
       .then((result) => result.json())
-      .then((data) => dispatch(setBrands(data)))
-      getAdvertisements().then((data) => dispatch(setAdvertisement(data)))
+      .then((data) => dispatch(setBrands(data)));
+    getAdvertisements().then((data) =>
+      dispatch(setAdvertisement({ advertisements: data, clear: true }))
+    );
   }, []);
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          element={<HomePage />}
-          path="/"
-          errorElement={<ErrorBoundary />}
-        />
-        <Route
-        element={<AdvertisementDetail/>}
-        path="/advertisement/:id"/>
+        <Route element={<HomePage />} path="/" errorElement={<ErrorBoundary />}>
+          <Route element={<AdvertisementDetail />} path="advertisement/:id" />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
