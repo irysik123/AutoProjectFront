@@ -7,12 +7,15 @@ import * as yup from "yup";
 import ModalBox from "./ModalBox";
 import { useSelector } from "react-redux";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Select from 'react-select';
 
 export default function AddForm() {
 
   const { brands} = useSelector((state) => {
     return state.cars;
   });
+
+  
 
   const { Formik } = formik;
 
@@ -46,7 +49,7 @@ export default function AddForm() {
           <Form noValidate onSubmit={handleSubmit}>
             <Row className="mb-3">
               <Form.Label>Brand name</Form.Label>
-              <Form.Select aria-label="Select brand name">
+              <Form.Select name="brand" aria-label="Select brand name" >
                 <option>Select brand name</option>
                 {brands.map((brand, i) => (
                   <option value={brand} key={i}>
@@ -112,7 +115,7 @@ export default function AddForm() {
             <Form.Control.Feedback tooltip>Looks good!</Form.Control.Feedback>
 
             <Form.Label>Accessories</Form.Label>
-            {["checkbox"].map((type) => (
+            {/* {["checkbox"].map((type) => (
               <div key={`inline-${type}`} className="mb-3">
                 <Form.Check
                   inline
@@ -143,7 +146,9 @@ export default function AddForm() {
                   id={`inline-${type}-1`}
                 />
               </div>
-            ))}
+            ))} */}
+            {/* <Select {...props} onChange= {({ value }) => {handleChange(value)}
+  }/> */}
 
             <Form.Label>Functionalities</Form.Label>
             {["checkbox"].map((type) => (

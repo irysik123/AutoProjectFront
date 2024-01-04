@@ -55,6 +55,12 @@ app.get("/brands", (req, res) => {
   res.json(cars.map((i) => i.make));
 });
 
+app.get("/accessories", (req,res) => {
+  let notUniqueAccessories = cars.map((i) => i.accessories).flat()
+  let uniqueAccessories = new Set(notUniqueAccessories)
+  res.json(Array.from(uniqueAccessories))
+})
+
 app.get("/advertisement/:id", async (req, res) => {
   let id = req.params.id;
   let advertisement = await getAdvertisementById(id);

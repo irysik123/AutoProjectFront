@@ -20,7 +20,7 @@ function Advertisements() {
     getAdvertisements({ brand, price, mileage, offset: newOffset }).then(
       (data) => {
         dispatch(setLoadMore(data.total > data.amount))
-        dispatch(setAdvertisement({advertisements: data.data, clear: false}))
+        dispatch(setAdvertisement({advertisements: data.data || [], clear: false}))
       }
     );
   }

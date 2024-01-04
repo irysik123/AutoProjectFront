@@ -8,16 +8,18 @@ import { Route, useRouteError, BrowserRouter, Routes } from "react-router-dom";
 import { getAdvertisements } from "./utils/getAdvertisements";
 import AdvertisementDetail from "./components/AdvetisementDetail";
 import { getBrands } from "./utils/getBrands";
+import {getAccessories} from "./utils/getAccessories"
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getBrands().then((data) => dispatch(setBrands(data)));
+    getBrands().then((data) => dispatch(setBrands(data || [])));
     getAdvertisements().then((data) => {
       dispatch(setLoadMore(data.total > data.amount));
-      dispatch(setAdvertisement({ advertisements: data.data, clear: true }));
+      dispatch(setAdvertisement({ advertisements: data.data || [], clear: true }));
     });
+    // getAccessories().then((data) => dispatch(setAccessories(data)))
   }, []);
 
   return (
